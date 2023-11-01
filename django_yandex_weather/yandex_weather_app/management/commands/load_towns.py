@@ -7,10 +7,8 @@ class Command(BaseCommand):
     help = 'Add towns'
 
     def handle(self, *args, **kwargs):
-
         with open('towns_coordinates.txt', encoding='utf-8', mode='r') as file:
             towns_list = [line.split('—') for line in file]
-            print(towns_list)
             towns = {town[0].strip(): town[1].strip() for town in towns_list}
 
         bulk_list = list()
@@ -20,4 +18,5 @@ class Command(BaseCommand):
             bulk_list.append(
                 Town(name=town_name, lat=lat.strip(), lon=lon.strip())
             )
-            Town.objects.bulk_create(bulk_list)
+
+        Town.objects.bulk_create(bulk_list)
