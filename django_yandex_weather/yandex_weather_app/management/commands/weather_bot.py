@@ -17,8 +17,6 @@ env.read_env()
 yandex_weather_api_key = env.str('YANDEX_WEATHER_API_KEY')
 telegram_api_token = env.str('TELEGRAM_API_TOKEN')
 
-_database = None
-
 
 def start(bot, update):
     keyboard = [[InlineKeyboardButton('Узнать погоду', callback_data='Погода')]]
