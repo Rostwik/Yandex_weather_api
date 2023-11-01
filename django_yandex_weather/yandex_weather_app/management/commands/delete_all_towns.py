@@ -4,7 +4,7 @@ from yandex_weather_app.models import Town
 
 
 class Command(BaseCommand):
-    help = 'Add towns'
+    help = 'Delete towns'
 
     def handle(self, *args, **kwargs):
 

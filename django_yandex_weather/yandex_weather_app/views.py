@@ -4,14 +4,14 @@ from django.http import JsonResponse
 from django.utils import timezone
 
 from environs import Env
-from datetime import datetime, timedelta
+from datetime import timedelta
 
 from yandex_weather_app.models import Town
 
 env = Env()
 env.read_env()
 
-YANDEX_WEATHER_KEY = env.str('YANDEX_WEATHER_API_KEY')
+yandex_weather_key = env.str('YANDEX_WEATHER_API_KEY')
 
 
 def weather(request):
@@ -23,7 +23,7 @@ def weather(request):
             if not town.is_request or town.request_time + timedelta(minutes=30) < timezone.localtime(timezone.now()):
                 yandex_api_url = 'https://api.weather.yandex.ru/v2/forecast'
                 headers = {
-                    'X-Yandex-API-Key': YANDEX_WEATHER_KEY
+                    'X-Yandex-API-Key': yandex_weather_key
                 }
                 payload = {
                     'lat': town.lat,

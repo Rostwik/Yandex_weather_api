@@ -13,3 +13,8 @@ class Town(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class BotState(models.Model):
+    chat_id = models.CharField(max_length=100, verbose_name='Телеграм chat_id', blank=True, null=True)
+    state = models.CharField(max_length=100, verbose_name='Состояние бота', blank=True, null=True)
