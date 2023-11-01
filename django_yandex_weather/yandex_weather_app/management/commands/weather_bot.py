@@ -122,17 +122,6 @@ def handle_users_reply(bot, update):
     user_state.save()
 
 
-def get_database_connection():
-    global _database
-
-    if _database is None:
-        redis_bd_credentials = env.str('REDIS_BD_CREDENTIALS')
-        _database = redis.from_url(redis_bd_credentials)
-        _database.ping()
-
-    return _database
-
-
 class Command(BaseCommand):
     help = 'Телеграм-бот'
 
