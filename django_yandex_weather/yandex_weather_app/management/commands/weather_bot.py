@@ -5,7 +5,6 @@ from django.core.management.base import BaseCommand
 from yandex_weather_app.models import Town, BotState
 
 from environs import Env
-import redis
 import telegram
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 
