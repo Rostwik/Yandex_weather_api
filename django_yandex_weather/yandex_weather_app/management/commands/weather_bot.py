@@ -65,9 +65,9 @@ def handle_weather(bot, update):
         weather_message = textwrap.dedent(
             f'''
                     Город: {town},
-                    Температура: {weather_json['temp']} градусов Цельсия',
-                    Атмосферное давление: {weather_json['pressure_mm']} мм рт.ст.',
-                    Скорость ветра: {weather_json['wind_speed']} м/с'
+                    Температура: {weather_json['temp']} градусов Цельсия,
+                    Атмосферное давление: {weather_json['pressure_mm']} мм рт.ст.,
+                    Скорость ветра: {weather_json['wind_speed']} м/с
             '''
         )
 
