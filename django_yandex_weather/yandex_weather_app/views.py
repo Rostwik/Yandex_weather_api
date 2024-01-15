@@ -14,6 +14,9 @@ env.read_env()
 yandex_weather_key = env.str('YANDEX_WEATHER_API_KEY')
 
 
+def sun(request):
+    pass
+
 def weather(request):
     if request.method == 'GET':
         current_tz = pytz.timezone('Europe/Moscow')
