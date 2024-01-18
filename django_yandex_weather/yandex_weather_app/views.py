@@ -38,7 +38,6 @@ def sun(request):
 
             weather_forecast = response.json()['forecast']
 
-
             context = {
                 'fact': weather_fact,
                 'forecast': weather_forecast,
@@ -60,7 +59,8 @@ def sun(request):
             #         'indent': 4,
             #     })
     except Exception as exp:
-        print(exp)
+        return render(request, 'index.html', context={'err': 1})
+
 
 def weather(request):
     if request.method == 'GET':

@@ -8,10 +8,25 @@
     <link rel="stylesheet" href="{% static 'style.css' %}">
     <title>Предел Роста</title>
 </head>
+
+{% if err %}
+
 <body>
+
+    <header>
+        <h1>Ведутся технические работы, приносим свои извинения, полагаю завтра уже все наладится!</h1>
+    </header>
+
+</body>
+
+{% else %}
+
+<body>
+
     <header>
         <h1>Предел Роста</h1>
     </header>
+
     <main>
         <div class="info">
             <h2>Город</h2>
@@ -41,4 +56,7 @@
         </div>
     </main>
 </body>
+
+{% endif %}
+
 </html>
