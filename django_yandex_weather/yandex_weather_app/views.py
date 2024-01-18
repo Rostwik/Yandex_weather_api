@@ -16,47 +16,51 @@ yandex_weather_key = env.str('YANDEX_WEATHER_API_KEY')
 
 
 def sun(request):
-    return render(request, "index.html")
+    try:
+        if request.method == 'GET':
+            town = {
+                'name': 'Санкт-Петербург',
+                'lat': 59.94,
+                'lon': 30.31
+            }
+            yandex_api_url = 'https://api.weather.yandex.ru/v2/informers/'
+            headers = {
+                'X-Yandex-API-Key': yandex_weather_key
+            }
+            payload = {
+                'lat': town['lat'],
+                'lon': town['lon'],
+                'lang': 'ru_RU'
+            }
+            response = requests.get(yandex_api_url, params=payload, headers=headers)
+            response.raise_for_status()
+            weather_fact = response.json()['fact']
 
-    # try:
-    #     if request.method == 'GET':
-    #         town = {
-    #             'name': 'СПб',
-    #             'lat': 59.94,
-    #             'lon': 30.31
-    #         }
-    #         yandex_api_url = 'https://api.weather.yandex.ru/v2/informers'
-    #         headers = {
-    #             'X-Yandex-API-Key': yandex_weather_key
-    #         }
-    #         payload = {
-    #             'lat': town['lat'],
-    #             'lon': town['lon'],
-    #             'extra': 'false'
-    #         }
-    #         response = requests.get(yandex_api_url, params=payload, headers=headers)
-    #         print(response)
-    #         response.raise_for_status()
-    #         weather_fact = response.json()['fact']
-    #         print(weather_fact)
-    #         weather_forecast = response.json()['forecast']
-    #         print(weather_forecast)
-    #
-    #         return JsonResponse(
-    #             {
-    #                 'Город': town['name'],
-    #                 'Температура': f"{weather_fact['temp']} градусов Цельсия",
-    #                 'Атмосферное давление': f"{weather_fact['pressure_mm']} мм рт.ст.",
-    #                 'Скорость ветра': f"{weather_fact['wind_speed']} м/с",
-    #                 'sunrise': weather_forecast['sunrise'],
-    #                 'sunset': weather_forecast['sunset']
-    #             }
-    #             , safe=False, json_dumps_params={
-    #                 'ensure_ascii': False,
-    #                 'indent': 4,
-    #             })
-    # except Exception as exp:
-    #     print(exp)
+            weather_forecast = response.json()['forecast']
+
+
+            context = {
+                'fact': weather_fact,
+                'forecast': weather_forecast,
+                'town': town['name']
+            }
+            return render(request, 'index.html', context)
+
+            # return JsonResponse(
+            #     {
+            #         'Город': town['name'],
+            #         'Температура': f"{weather_fact['temp']} градусов Цельсия",
+            #         'Атмосферное давление': f"{weather_fact['pressure_mm']} мм рт.ст.",
+            #         'Скорость ветра': f"{weather_fact['wind_speed']} м/с",
+            #         'sunrise': weather_forecast['sunrise'],
+            #         'sunset': weather_forecast['sunset']
+            #     }
+            #     , safe=False, json_dumps_params={
+            #         'ensure_ascii': False,
+            #         'indent': 4,
+            #     })
+    except Exception as exp:
+        print(exp)
 
 def weather(request):
     if request.method == 'GET':
