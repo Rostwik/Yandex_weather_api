@@ -1,16 +1,20 @@
 body {
-    background-color: #000;
-    color: #fff;
-    font-family: Arial, sans-serif;
+
+    background-image: url('9.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 header {
     text-align: center;
     padding: 20px;
+
 }
 
 h1 {
     font-size: 36px;
+    text-shadow: 3px 2px #9d9da7;
+
 }
 
 main {
