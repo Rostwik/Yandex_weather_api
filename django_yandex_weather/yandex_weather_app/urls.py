@@ -6,6 +6,9 @@ from yandex_weather_app import views
 
 urlpatterns = [
     path('weather/', views.weather, name='weather'),
-    path('sun/', views.sun, name='sun'),
+
+
+
+
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -24,35 +24,69 @@
 <body>
 
     <header>
-        <h1>Предел Роста</h1>
+        <h1>"Предел Роста"</h1>
     </header>
 
     <main>
-        <div class="info">
-            <h2>Город</h2>
-            <p>{{town}}</p>
-        </div>
-        <div class="info">
-            <h2>Температура</h2>
-            <p>{{fact.temp}}</p>
-        </div>
-        <div class="info">
-            <h2>Атмосферное давление</h2>
-            <p>{{fact.pressure_mm}}</p>
-        </div>
-        <div class="info">
-            <h2>Скорость ветра (м/с)</h2>
-            <p>{{fact.wind_speed}}</p>
-        </div>
-        <div class="info">
-            <div >
-                <h2>Восход</h2>
-                <p>{{forecast.sunrise}}</p>
+        <div class="weather">
+            <div class="info">
+                <h2>Город</h2>
+                <p>{{town}}</p>
             </div>
-            <div >
-                <h2>Закат</h2>
-                <p>{{forecast.sunset}}</p>
+            <div class="info">
+                <h2>Температура</h2>
+                <p>{{fact.temp}}</p>
+            </div>
+            <div class="info">
+                <h2>Атмосферное давление</h2>
+                <p>{{fact.pressure_mm}}</p>
+            </div>
+            <div class="info">
+                <h2>Скорость ветра (м/с)</h2>
+                <p>{{fact.wind_speed}}</p>
+            </div>
+            <div class="info">
+                <div >
+                    <h2>Восход</h2>
+                    <p>{{forecast.sunrise}}</p>
+                </div>
+                <div >
+                    <h2>Закат</h2>
+                    <p>{{forecast.sunset}}</p>
+                </div>
+            </div>
         </div>
+        <div >
+            <div class="beauty">
+                <h1>Виды "Предела Роста"</h1>
+            </div>
+            <div class="beauty">
+                <div class="beauty-img">
+                    <a href="{% url 'images' 1 %}">
+                        <img src="{% static 'image_1.jpg' %}">
+                    </a>
+                </div>
+                <div class="beauty-img">
+                    <a href="{% url 'images' 2 %}">
+                        <img src="{% static 'image_2.jpg' %}">
+                    </a>
+                </div>
+                <div class="beauty-img">
+                    <a href="{% url 'images' 3 %}">
+                        <img src="{% static 'image_3.jpg' %}">
+                    </a>
+                </div>
+                <div class="beauty-img">
+                    <a href="{% url 'images' 4 %}">
+                        <img src="{% static 'image_4.jpg' %}">
+                    </a>
+                </div>
+                <div class="beauty-img">
+                    <a href="{% url 'images' 5 %}">
+                        <img src="{% static 'image_5.jpg' %}">
+                    </a>
+                </div>
+            </div>
         </div>
     </main>
 </body>

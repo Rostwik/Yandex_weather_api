@@ -15,6 +15,10 @@ env.read_env()
 yandex_weather_key = env.str('YANDEX_WEATHER_API_KEY')
 
 
+def images(request, img):
+    return render(request, 'beauty.html', {'img_name': f'image_{img}.jpg'})
+
+
 def sun(request):
     try:
         if request.method == 'GET':
